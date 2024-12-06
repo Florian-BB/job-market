@@ -1,0 +1,10 @@
+FROM python:3.9-slim
+
+# Installer les dépendances Python directement
+RUN pip install mysql-connector-python fastapi sqlalchemy pandas httptools uvloop uvicorn
+
+# Exposer le port 5000 pour l'application Dash
+EXPOSE 8888
+
+# Lancer l'application Dash
+CMD ["uvicorn", "home.ubuntu.myapi:api", "--host", "0.0.0.0", "--port", "8888", "--reload"]
